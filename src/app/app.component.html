@@ -318,6 +318,14 @@
   <!-- <h1>Hola, {{ nombre }}!</h1> -->
 
   <!-- Input para trabajar con NgModel -->
-  <input type="text" placeholder="Nombre de user" [(ngModel)]="nombre" />
-  <app-saludo [nombre]="nombre"></app-saludo>
+  <input type="text" placeholder="Nombre de user" [(ngModel)]="usuario" />
+
+  <!-- Se le pasa la variable nombre desde el componente padre, al hijo -->
+  <app-saludo
+    [nombre]="usuario"
+    (mensajeEmitter)="recibirMensajeDelHijo($event)"
+  ></app-saludo>
+
+  <!-- No se le pasa nada. Por lo que se muesta el valor por defecto (que indicamos en saludo.component.ts) -->
+  <app-saludo></app-saludo>
 </div>
